@@ -13,5 +13,5 @@ CRONTAB=/etc/crontabs/root
 bf-esh \
     ${BF_TEMPLATES}/crontab.esh \
     ${CRONTAB}
-echo "${BACKUP_CRON} execute" >> ${CRONTAB}
+echo "${BACKUP_CRON} dup-default" >> ${CRONTAB}
 bf-done
