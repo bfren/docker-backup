@@ -8,6 +8,8 @@ export BF_E=`basename ${0}`
 # Check for passphrase.
 #======================================================================================================================
 
+bf-debug "Verifying setup."
+
 [[ -z "${BACKUP_DUPLICITY_PASSPHRASE-}" ]] \
     && bf-error "You must define BACKUP_DUPLICITY_PASSPHRASE." "test-setup"
 
@@ -24,3 +26,10 @@ export BF_E=`basename ${0}`
 
 [[ ! -f ${RCLONE_EXCLUDE_FROM} ]] \
     && touch ${RCLONE_EXCLUDE_FROM}
+
+
+#======================================================================================================================
+# Done.
+#======================================================================================================================
+
+bf-debug "Test complete."
