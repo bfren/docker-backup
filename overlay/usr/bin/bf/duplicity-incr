@@ -19,5 +19,6 @@ bf-echo "Executing incremental backup..."
 PASSPHRASE=${BACKUP_DUPLICITY_PASSPHRASE} \
     duplicity incr \
     --archive-dir ${DUPLICITY_CONFIG} \
+    --log-file ${DUPLICITY_LOG} \
     "${BACKUP_SOURCE}" "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}"
 bf-done

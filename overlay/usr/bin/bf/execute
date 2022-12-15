@@ -20,5 +20,6 @@ PASSPHRASE=${BACKUP_DUPLICITY_PASSPHRASE} \
     duplicity \
     --archive-dir ${DUPLICITY_CONFIG} \
     --full-if-older-than ${BACKUP_DUPLICITY_FULL_EVERY} \
+    --log-file ${DUPLICITY_LOG} \
     "${BACKUP_SOURCE}" "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}"
 bf-done

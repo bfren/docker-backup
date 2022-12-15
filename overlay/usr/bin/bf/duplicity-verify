@@ -19,6 +19,7 @@ bf-echo "Verifying backup..."
 PASSPHRASE=${BACKUP_DUPLICITY_PASSPHRASE} \
     duplicity verify \
     --archive-dir ${DUPLICITY_CONFIG} \
+    --log-file ${DUPLICITY_LOG} \
     "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" \
     "${BACKUP_SOURCE}"
 bf-done
