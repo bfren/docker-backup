@@ -19,5 +19,6 @@ bf-echo "Verifying backup..."
 PASSPHRASE=${BACKUP_DUPLICITY_PASSPHRASE} \
     duplicity verify \
     --allow-source-mismatch \
-    "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}"
+    "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" \
+    "${BACKUP_SOURCE}"
 bf-done

@@ -33,5 +33,5 @@ PASSPHRASE=${BACKUP_DUPLICITY_PASSPHRASE} \
     --allow-source-mismatch \
     --file-to-restore "${FILE_TO_RESTORE}" \
     "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" \
-    "${BACKUP_RESTORE}"
+    "${BACKUP_RESTORE}/"
 bf-done
