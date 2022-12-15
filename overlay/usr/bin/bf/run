@@ -19,7 +19,7 @@ export BF_E=`basename ${0}`
 [[ -f ${RCLONE_CONFIG} ]] \
     || bf-error "rclone configuration not found." "run"
 
-[[ rclone config show ${BACKUP_RCLONE_STORAGE} 2>&1 > /dev/null ]] \
+[[ ${BF_LIB}/test-rclone-storage ]] \
     || bf-error "rclone storage '${BACKUP_RCLONE_STORAGE}' is not defined." "run"
 
 

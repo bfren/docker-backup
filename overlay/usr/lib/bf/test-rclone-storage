@@ -5,7 +5,7 @@ export BF_E=`basename ${0}`
 
 
 #======================================================================================================================
-# Run rclone config (environment variables force rclone to use /config to store configuration file).
+# Verify rclone configuration.
 #======================================================================================================================
 
-rclone config
+rclone config show ${BACKUP_RCLONE_STORAGE} > /dev/null 2>&1
