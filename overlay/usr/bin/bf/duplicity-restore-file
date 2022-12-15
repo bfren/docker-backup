@@ -1,0 +1,37 @@
+#!/command/with-contenv sh
+
+set -euo pipefail
+export BF_E=`basename ${0}`
+
+
+#======================================================================================================================
+# Test setup.
+#======================================================================================================================
+
+${BF_LIB}/test-setup
+
+
+#======================================================================================================================
+# Get file to restore.
+#======================================================================================================================
+
+[[ -z "${1-}" ]] && bf-error "You must specify the file to restore." "restore-file"
+FILE_TO_RESTORE=${1}
+
+
+#======================================================================================================================
+# Restore specified file.
+#======================================================================================================================
+
+bf-echo "Removing ${BACKUP_RESTORE}/${FILE_TO_RESTORE}..."
+rm -f ${BACKUP_RESTORE}/${FILE_TO_RESTORE}
+bf-done
+
+bf-echo "Restoring file ${FILE_TO_RESTORE}..."
+PASSPHRASE=${BACKUP_DUPLICITY_PASSPHRASE} \
+    duplicity restore \
+    --allow-source-mismatch \
+    --file-to-restore "${FILE_TO_RESTORE}" \
+    "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" \
+    "${BACKUP_RESTORE}/${FILE_TO_RESTORE}"
+bf-done

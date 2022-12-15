@@ -1,0 +1,28 @@
+#!/command/with-contenv sh
+
+set -euo pipefail
+export BF_E=`basename ${0}`
+
+
+#======================================================================================================================
+# Test setup.
+#======================================================================================================================
+
+${BF_LIB}/test-setup
+
+
+#======================================================================================================================
+# Restore entire backup.
+#======================================================================================================================
+
+bf-echo "Removing everything in ${BACKUP_RESTORE}..."
+bf-rmrf ${BACKUP_RESTORE}/*
+bf-done
+
+bf-echo "Restoring entire backup..."
+PASSPHRASE=${BACKUP_DUPLICITY_PASSPHRASE} \
+    duplicity restore \
+    --allow-source-mismatch \
+    "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" \
+    "${BACKUP_RESTORE}"
+bf-done

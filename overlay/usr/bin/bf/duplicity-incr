@@ -12,12 +12,12 @@ ${BF_LIB}/test-setup
 
 
 #======================================================================================================================
-# Restore entire backup.
+# Execute full backup.
 #======================================================================================================================
 
-bf-echo "Restoring entire backup..."
+bf-echo "Executing incremental backup..."
 PASSPHRASE=${BACKUP_DUPLICITY_PASSPHRASE} \
-    duplicity \
-    "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" \
-    "${BACKUP_RESTORE}"
+    duplicity incr \
+    --allow-source-mismatch \
+    "${BACKUP_SOURCE}" "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}"
 bf-done
