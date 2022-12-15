@@ -15,7 +15,7 @@ ${BF_LIB}/test-setup
 # Get file to restore.
 #======================================================================================================================
 
-[[ -z "${1-}" ]] && bf-error "You must specify the file to restore." "restore-file"
+[[ -z "${1-}" ]] && bf-error "You must specify the file to restore."
 FILE_TO_RESTORE=${1}
 FILENAME=`basename ${FILE_TO_RESTORE}`
 
