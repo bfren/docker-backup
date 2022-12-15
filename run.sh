@@ -9,4 +9,4 @@ docker buildx build \
     -t backup-dev \
     . \
     && \
-    docker run -it -e BACKUP_DUPLICITY_PASSPHRASE=fred -e BACKUP_RCLONE_STORAGE=fred backup-dev sh
+    docker run -it -e BACKUP_DUPLICITY_PASSPHRASE=fred -e BACKUP_RCLONE_STORAGE=fred -e BACKUP_RCLONE_PATH=/Backup/Test -v $PWD/config:/config backup-dev sh
