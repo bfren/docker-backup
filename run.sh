@@ -10,6 +10,7 @@ docker buildx build \
     .
 
 docker run -it \
+    -e BF_DEBUG=1 \
     -e BACKUP_DUPLICITY_PASSPHRASE=fred \
     -e BACKUP_RCLONE_STORAGE=fred \
     -e BACKUP_RCLONE_PATH=/Backup/Test \
