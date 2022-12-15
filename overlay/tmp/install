@@ -21,7 +21,7 @@ bf-echo "rclone version ${RCLONE_VERSION}."
 # Install duplicity and rclone.
 #======================================================================================================================
 
-bf-echo "Installing vsftpd v${VERSION}..."
+bf-echo "Installing duplicity v${DUPLICITY_VERSION} and rclone v${RCLONE_VERSION}..."
 apk add --no-cache \
     duplicity=${DUPLICITY_VERSION} \
     rclone=${RCLONE_VERSION}
