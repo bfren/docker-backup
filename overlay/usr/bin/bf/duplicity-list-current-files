@@ -15,7 +15,7 @@ ${BF_LIB}/test-setup
 # Execute full backup.
 #======================================================================================================================
 
-bf-echo "Executing incremental backup..."
+bf-echo "Listing files currently included in the backup..."
 PASSPHRASE=${BACKUP_DUPLICITY_PASSPHRASE} \
     duplicity list-current-files \
     --allow-source-mismatch \

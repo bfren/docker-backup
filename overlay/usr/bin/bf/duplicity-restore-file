@@ -23,8 +23,8 @@ FILE_TO_RESTORE=${1}
 # Restore specified file.
 #======================================================================================================================
 
-bf-echo "Removing ${BACKUP_RESTORE}/${FILE_TO_RESTORE}..."
-rm -f ${BACKUP_RESTORE}/${FILE_TO_RESTORE}
+bf-echo "Removing everything in ${BACKUP_RESTORE}..."
+bf-rmrf ${BACKUP_RESTORE}/*
 bf-done
 
 bf-echo "Restoring file ${FILE_TO_RESTORE}..."
@@ -33,5 +33,5 @@ PASSPHRASE=${BACKUP_DUPLICITY_PASSPHRASE} \
     --allow-source-mismatch \
     --file-to-restore "${FILE_TO_RESTORE}" \
     "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" \
-    "${BACKUP_RESTORE}/${FILE_TO_RESTORE}"
+    "${BACKUP_RESTORE}"
 bf-done
