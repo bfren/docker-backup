@@ -26,3 +26,10 @@ apk add --no-cache \
     duplicity=${DUPLICITY_VERSION} \
     rclone=${RCLONE_VERSION}
 bf-done
+
+
+#======================================================================================================================
+# Store default crontab as a template.
+#======================================================================================================================
+
+cp /etc/crontabs/root /etc/bf/templates/crontab.esh
