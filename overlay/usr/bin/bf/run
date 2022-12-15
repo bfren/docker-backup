@@ -28,4 +28,5 @@ export BF_E=`basename ${0}`
 #======================================================================================================================
 
 PASSPHRASE=${BACKUP_DUPLICITY_PASSPHRASE} \
-    duplicity "${BACKUP_SOURCE}" "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}"
+    duplicity --full-if-older-than ${BACKUP_DUPLICITY_FULL_EVERY} \
+    "${BACKUP_SOURCE}" "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}"
