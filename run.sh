@@ -15,4 +15,5 @@ docker run -it \
     -e BACKUP_RCLONE_PATH=/Backup/Test \
     -v $PWD/Dockerfile:/b/Dockerfile \
     -v $PWD/config:/config \
+    -v $PWD/restore:/restore \
     backup-dev sh
