@@ -1,0 +1,15 @@
+#!/command/with-contenv sh
+
+set -euo pipefail
+export BF_E=`basename ${0}`
+
+
+#======================================================================================================================
+# Set environment variables.
+#======================================================================================================================
+
+BACKUP_CONFIG=/config
+bf-env "BACKUP_CONFIG" "${BACKUP_CONFIG}"
+bf-env "BACKUP_SOURCE" "/source"
+
+bf-env "RCLONE_CONFIG" "${BACKUP_CONFIG}/rclone.conf"

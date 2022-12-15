@@ -1,0 +1,31 @@
+#!/bin/with-contenv sh
+
+set -euo pipefail
+export BF_E=`basename ${0}`
+
+
+#======================================================================================================================
+# Check for passphrase.
+#======================================================================================================================
+
+[[ -z "${BACKUP_DUPLICITY_PASSPHRASE-}" ]] \
+    && bf-error "You must define BACKUP_DUPLICITY_PASSPHRASE." "run"
+
+
+#======================================================================================================================
+# Verify rclone configuration.
+#======================================================================================================================
+
+[[ -f ${RCLONE_CONFIG} ]] \
+    || bf-error "rclone configuration not found." "run"
+
+[[ rclone config show ${BACKUP_RCLONE_STORAGE} 2>&1 > /dev/null ]] \
+    || bf-error "rclone storage '${BACKUP_RCLONE_STORAGE}' is not defined." "run"
+
+
+#======================================================================================================================
+# Execute backup.
+#======================================================================================================================
+
+PASSPHRASE=${BACKUP_DUPLICITY_PASSPHRASE} \
+    duplicity "${BACKUP_SOURCE}" "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}"

@@ -1,0 +1,28 @@
+#!/bin/sh
+
+set -euo pipefail
+export BF_E=`basename ${0}`
+
+
+#======================================================================================================================
+# Get versions.
+#======================================================================================================================
+
+cd /tmp
+
+DUPLICITY_VERSION=$(cat DUPLICITY_BUILD)
+bf-echo "duplicity version ${DUPLICITY_VERSION}."
+
+RCLONE_VERSION=$(cat RCLONE_BUILD)
+bf-echo "rclone version ${RCLONE_VERSION}."
+
+
+#======================================================================================================================
+# Install duplicity and rclone.
+#======================================================================================================================
+
+bf-echo "Installing vsftpd v${VERSION}..."
+apk add --no-cache \
+    duplicity=${DUPLICITY_VERSION} \
+    rclone=${RCLONE_VERSION}
+bf-done
