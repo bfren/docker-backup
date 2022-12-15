@@ -13,7 +13,9 @@ ENV \
     # path within storage provider for putting backups - should start with a slash
     BACKUP_RCLONE_PATH=/ \
     # used to encrypt backup data - if not set, backup will not be run
-    BACKUP_DUPLICITY_PASSPHRASE=
+    BACKUP_DUPLICITY_PASSPHRASE= \
+    # how often to run a full backup (default: one month - see https://duplicity.gitlab.io/stable/duplicity.1.html#time-formats)
+    BACKUP_DUPLICITY_FULL_EVERY=1M
 
 COPY ./overlay /
 
