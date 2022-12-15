@@ -15,7 +15,6 @@ bf-env "DUPLICITY_CONFIG" "${BACKUP_CONFIG}/duplicity"
 bf-env "DUPLICITY_LOG" "${BACKUP_CONFIG}/duplicity.log"
 
 bf-env "RCLONE_CONFIG" "${BACKUP_CONFIG}/rclone.conf"
-bf-env "RCLONE_EXCLUDE_FROM" "${BACKUP_CONFIG}/rclone-exclusions.txt"
 bf-env "RCLONE_LOG_FILE" "${BACKUP_CONFIG}/rclone.log"
 
 bf-env "BACKUP_SOURCE" "/b"
