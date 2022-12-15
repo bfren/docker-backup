@@ -30,7 +30,7 @@ bf-done
 bf-echo "Restoring file ${FILE_TO_RESTORE}..."
 PASSPHRASE=${BACKUP_DUPLICITY_PASSPHRASE} \
     duplicity restore \
-    --allow-source-mismatch \
+    --archive-dir ${DUPLICITY_CONFIG} \
     --file-to-restore "${FILE_TO_RESTORE}" \
     "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" \
     "${BACKUP_RESTORE}/"

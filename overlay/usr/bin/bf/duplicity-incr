@@ -18,6 +18,6 @@ ${BF_LIB}/test-setup
 bf-echo "Executing incremental backup..."
 PASSPHRASE=${BACKUP_DUPLICITY_PASSPHRASE} \
     duplicity incr \
-    --allow-source-mismatch \
+    --archive-dir ${DUPLICITY_CONFIG} \
     "${BACKUP_SOURCE}" "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}"
 bf-done

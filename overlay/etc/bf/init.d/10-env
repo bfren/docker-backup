@@ -11,6 +11,8 @@ export BF_E=`basename ${0}`
 BACKUP_CONFIG=/config
 bf-env "BACKUP_CONFIG" "${BACKUP_CONFIG}"
 
+bf-env "DUPLICITY_CONFIG" "${BACKUP_CONFIG}/duplicity"
+
 bf-env "RCLONE_CONFIG" "${BACKUP_CONFIG}/rclone.conf"
 bf-env "RCLONE_EXCLUDE_FROM" "${BACKUP_CONFIG}/exclusions.txt"
 

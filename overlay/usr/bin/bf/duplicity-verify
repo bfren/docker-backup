@@ -18,7 +18,7 @@ ${BF_LIB}/test-setup
 bf-echo "Verifying backup..."
 PASSPHRASE=${BACKUP_DUPLICITY_PASSPHRASE} \
     duplicity verify \
-    --allow-source-mismatch \
+    --archive-dir ${DUPLICITY_CONFIG} \
     "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" \
     "${BACKUP_SOURCE}"
 bf-done
