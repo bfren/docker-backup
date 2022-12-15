@@ -22,5 +22,5 @@ export BF_E=`basename ${0}`
 [[ ${BF_LIB}/test-rclone-storage ]] \
     || bf-error "rclone storage '${BACKUP_RCLONE_STORAGE}' is not defined." "test-setup"
 
-[[ ! -f ${RCLONE_EXCLUSIONS} ]] \
-    && touch ${RCLONE_EXCLUSIONS}
+[[ ! -f ${RCLONE_EXCLUDE_FROM} ]] \
+    && touch ${RCLONE_EXCLUDE_FROM}
