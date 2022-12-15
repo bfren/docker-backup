@@ -12,6 +12,8 @@ ENV \
     BACKUP_DUPLICITY_PASSPHRASE= \
     # how often to run a full backup (default: one month - see https://duplicity.gitlab.io/stable/duplicity.1.html#time-formats)
     BACKUP_DUPLICITY_FULL_EVERY=1M \
+    # the number of full backups to keep
+    DUPLICITY_KEEP_FULL=3 \
     # the name of the (configured) rclone storage provider
     BACKUP_RCLONE_STORAGE= \
     # path within storage provider for putting backups - should start with a slash
