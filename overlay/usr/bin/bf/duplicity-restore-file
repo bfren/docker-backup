@@ -17,6 +17,7 @@ ${BF_LIB}/test-setup
 
 [[ -z "${1-}" ]] && bf-error "You must specify the file to restore." "restore-file"
 FILE_TO_RESTORE=${1}
+FILENAME=`basename ${FILE_TO_RESTORE}`
 
 
 #======================================================================================================================
@@ -33,5 +34,5 @@ PASSPHRASE=${BACKUP_DUPLICITY_PASSPHRASE} \
     --archive-dir ${DUPLICITY_CONFIG} \
     --file-to-restore "${FILE_TO_RESTORE}" \
     "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" \
-    "${BACKUP_RESTORE}/"
+    "${BACKUP_RESTORE}/${FILENAME}"
 bf-done
