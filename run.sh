@@ -13,5 +13,6 @@ docker run -it \
     -e BACKUP_DUPLICITY_PASSPHRASE=fred \
     -e BACKUP_RCLONE_STORAGE=fred \
     -e BACKUP_RCLONE_PATH=/Backup/Test \
+    -v $PWD/Dockerfile:/b/Dockerfile \
     -v $PWD/config:/config \
     backup-dev sh

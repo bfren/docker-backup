@@ -12,11 +12,21 @@ ${BF_LIB}/test-setup
 
 
 #======================================================================================================================
-# Execute backup.
+# Get file to restore.
 #======================================================================================================================
 
-bf-echo "Executing backup..."
+[[ -z "${1-}" ]] && bf-error "You must specify the file to restore." "restore-file"
+FILE_TO_RESTORE=${1}
+
+
+#======================================================================================================================
+# Restore specified file.
+#======================================================================================================================
+
+bf-echo "Restoring file ${FILE_TO_RESTORE}..."
 PASSPHRASE=${BACKUP_DUPLICITY_PASSPHRASE} \
-    duplicity --full-if-older-than ${BACKUP_DUPLICITY_FULL_EVERY} \
-    "${BACKUP_SOURCE}" "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}"
+    duplicity \
+    --file-to-restore "${FILE_TO_RESTORE}" \
+    "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" \
+    "${BACKUP_RESTORE}/${FILE_TO_RESTORE}"
 bf-done

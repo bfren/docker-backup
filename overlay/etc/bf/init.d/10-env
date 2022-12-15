@@ -10,6 +10,10 @@ export BF_E=`basename ${0}`
 
 BACKUP_CONFIG=/config
 bf-env "BACKUP_CONFIG" "${BACKUP_CONFIG}"
-bf-env "BACKUP_SOURCE" "/source"
 
 bf-env "RCLONE_CONFIG" "${BACKUP_CONFIG}/rclone.conf"
+bf-env "RCLONE_EXCLUDE_FROM" "${BACKUP_CONFIG}/exclusions.txt"
+
+bf-env "BACKUP_SOURCE" "/b"
+bf-env "BACKUP_RESTORE" "/restore"
+

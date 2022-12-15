@@ -21,4 +21,4 @@ COPY ./overlay /
 
 RUN bf-install
 
-VOLUME [ "/config", "/source" ]
+VOLUME [ "/config", "/restore" ]
