@@ -18,6 +18,7 @@ ${BF_LIB}/test-setup
 bf-echo "Listing files currently included in the backup..."
 PASSPHRASE=${BACKUP_DUPLICITY_PASSPHRASE} \
     duplicity list-current-files \
+    --allow-source-mismatch \
     --archive-dir ${DUPLICITY_CONFIG} \
     --log-file ${DUPLICITY_LOG} \
     "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}"
