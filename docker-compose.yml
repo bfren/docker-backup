@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  backup:
+    image: bfren/backup
+    container_name: backup
+    restart: always
+    environment:
+      - BACKUP_DUPLICITY_PASSPHRASE=some-random-string
+      - BACKUP_RCLONE_STORAGE=dropbox
+      - BACKUP_RCLONE_PATH=/Backup
+    volumes:
+      - ./v/config:/config
+      - ./v/restore:/restore
+      - /data:/b/data:ro
+      - /etc/cron.d:/b/etc/cron.d:ro
+      - /etc/ssh/sshd_config:/b/etc/ssh/sshd_config:ro
+    networks:
+      - backup
+
+networks:
+  backup:
+    driver: bridge
+    name: backup
