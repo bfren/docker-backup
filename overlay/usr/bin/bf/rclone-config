@@ -1,0 +1,11 @@
+#!/command/with-contenv sh
+
+set -euo pipefail
+export BF_E=`basename ${0}`
+
+
+#======================================================================================================================
+# Run rclone config (environment variables force rclone to use /config to store configuration file).
+#======================================================================================================================
+
+rclone config

@@ -1,0 +1,17 @@
+#!/command/with-contenv sh
+
+set -euo pipefail
+export BF_E=`basename ${0}`
+
+
+#======================================================================================================================
+# Generate crontab and append backup task.
+#======================================================================================================================
+
+bf-echo "Generating crontab..."
+CRONTAB=/etc/crontabs/root
+bf-esh \
+    ${BF_TEMPLATES}/crontab.esh \
+    ${CRONTAB}
+echo "${BACKUP_CRON} dup-default" >> ${CRONTAB}
+bf-done

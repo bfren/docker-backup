@@ -1,0 +1,25 @@
+#!/command/with-contenv sh
+
+set -euo pipefail
+export BF_E=`basename ${0}`
+
+
+#======================================================================================================================
+# Test setup.
+#======================================================================================================================
+
+${BF_LIB}/test-setup
+
+
+#======================================================================================================================
+# Execute full backup.
+#======================================================================================================================
+
+bf-echo "Executing incremental backup..."
+PASSPHRASE=${BACKUP_DUPLICITY_PASSPHRASE} \
+    duplicity incr \
+    --allow-source-mismatch \
+    --archive-dir ${DUPLICITY_CONFIG} \
+    --log-file ${DUPLICITY_LOG} \
+    "${BACKUP_SOURCE}" "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}"
+bf-done

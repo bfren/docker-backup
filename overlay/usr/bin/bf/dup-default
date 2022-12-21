@@ -1,0 +1,40 @@
+#!/command/with-contenv sh
+
+set -euo pipefail
+export BF_E=`basename ${0}`
+
+
+#======================================================================================================================
+# Test setup.
+#======================================================================================================================
+
+${BF_LIB}/test-setup
+
+
+#======================================================================================================================
+# Execute backup.
+#======================================================================================================================
+
+bf-echo "Executing backup..."
+PASSPHRASE=${BACKUP_DUPLICITY_PASSPHRASE} \
+    duplicity \
+    --archive-dir ${DUPLICITY_CONFIG} \
+    --full-if-older-than ${BACKUP_DUPLICITY_FULL_EVERY} \
+    --log-file ${DUPLICITY_LOG} \
+    "${BACKUP_SOURCE}" "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}"
+bf-done
+
+
+#======================================================================================================================
+# Remove old backup files.
+#======================================================================================================================
+
+bf-echo "Removing old backups (keeping: ${DUPLICITY_KEEP_FULL} full backups)..."
+PASSPHRASE=${BACKUP_DUPLICITY_PASSPHRASE} \
+    duplicity remove-all-but-n-full ${BACKUP_DUPLICITY_KEEP_FULL} \
+    --allow-source-mismatch \
+    --archive-dir ${DUPLICITY_CONFIG} \
+    --force
+    --log-file ${DUPLICITY_LOG} \
+    "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}"
+bf-done

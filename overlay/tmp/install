@@ -1,0 +1,35 @@
+#!/bin/sh
+
+set -euo pipefail
+export BF_E=`basename ${0}`
+
+
+#======================================================================================================================
+# Get versions.
+#======================================================================================================================
+
+cd /tmp
+
+DUPLICITY_VERSION=$(cat DUPLICITY_BUILD)
+bf-echo "duplicity version ${DUPLICITY_VERSION}."
+
+RCLONE_VERSION=$(cat RCLONE_BUILD)
+bf-echo "rclone version ${RCLONE_VERSION}."
+
+
+#======================================================================================================================
+# Install duplicity and rclone.
+#======================================================================================================================
+
+bf-echo "Installing duplicity v${DUPLICITY_VERSION} and rclone v${RCLONE_VERSION}..."
+apk add --no-cache \
+    duplicity=${DUPLICITY_VERSION} \
+    rclone=${RCLONE_VERSION}
+bf-done
+
+
+#======================================================================================================================
+# Store default crontab as a template.
+#======================================================================================================================
+
+cp /etc/crontabs/root /etc/bf/templates/crontab.esh

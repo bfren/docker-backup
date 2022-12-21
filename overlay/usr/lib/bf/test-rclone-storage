@@ -1,0 +1,12 @@
+#!/command/with-contenv sh
+
+set -euo pipefail
+export BF_E=`basename ${0}`
+
+
+#======================================================================================================================
+# Verify rclone configuration (returns non-zero if BACKUP_RCLONE_STORAGE does not exist).
+#======================================================================================================================
+
+bf-debug "Testing rclone config for storage provider ${BACKUP_RCLONE_STORAGE}."
+rclone config show ${BACKUP_RCLONE_STORAGE} > /dev/null 2>&1

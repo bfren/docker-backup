@@ -1,0 +1,16 @@
+name: auto-release
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  create-release:
+    if: github.event.pull_request.merged
+    runs-on: ubuntu-latest
+    steps:
+    -
+      name: Create Release ${{ github.event.pull_request.title }}
+      uses: bfren/create-release@v3
+      with:
+        token: ${{ secrets.PAT }}
