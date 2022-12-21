@@ -18,7 +18,9 @@ ${BF_LIB}/test-setup
 bf-echo "Executing backup..."
 PASSPHRASE=${BACKUP_DUPLICITY_PASSPHRASE} \
     duplicity \
+    --allow-source-mismatch \
     --archive-dir ${DUPLICITY_CONFIG} \
+    --exclude-filelist ${DUPLICITY_EXCLUSIONS} \
     --full-if-older-than ${BACKUP_DUPLICITY_FULL_EVERY} \
     --log-file ${DUPLICITY_LOG} \
     "${BACKUP_SOURCE}" "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}"
@@ -34,7 +36,7 @@ PASSPHRASE=${BACKUP_DUPLICITY_PASSPHRASE} \
     duplicity remove-all-but-n-full ${BACKUP_DUPLICITY_KEEP_FULL} \
     --allow-source-mismatch \
     --archive-dir ${DUPLICITY_CONFIG} \
-    --force
+    --force \
     --log-file ${DUPLICITY_LOG} \
     "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}"
 bf-done

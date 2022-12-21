@@ -20,7 +20,8 @@ PASSPHRASE=${BACKUP_DUPLICITY_PASSPHRASE} \
     duplicity verify \
     --allow-source-mismatch \
     --archive-dir ${DUPLICITY_CONFIG} \
-    --log-file ${DUPLICITY_LOG} \
+    --exclude-filelist ${DUPLICITY_EXCLUSIONS} \
+    --progress \
     "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" \
     "${BACKUP_SOURCE}"
 bf-done

@@ -12,6 +12,7 @@ BACKUP_CONFIG=/config
 bf-env "BACKUP_CONFIG" "${BACKUP_CONFIG}"
 
 bf-env "DUPLICITY_CONFIG" "${BACKUP_CONFIG}/duplicity"
+bf-env "DUPLICITY_EXCLUSIONS" "${BACKUP_CONFIG}/exclusions.txt"
 bf-env "DUPLICITY_LOG" "${BACKUP_CONFIG}/duplicity.log"
 
 bf-env "RCLONE_CONFIG" "${BACKUP_CONFIG}/rclone.conf"
