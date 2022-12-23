@@ -28,11 +28,11 @@ bf-echo "Removing everything in ${BACKUP_RESTORE}..."
 bf-rmrf ${BACKUP_RESTORE}/*
 bf-done
 
-bf-echo "Restoring file ${FILE_TO_RESTORE}..."
+bf-echo "Restoring /${FILE_TO_RESTORE}..."
 PASSPHRASE=${BACKUP_DUPLICITY_PASSPHRASE} \
     duplicity restore \
     --allow-source-mismatch \
-    --archive-dir ${DUPLICITY_CONFIG} \
+    --archive-dir ${DUPLICITY_ARCHIVE} \
     --file-to-restore "${FILE_TO_RESTORE}" \
     --progress \
     "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" \

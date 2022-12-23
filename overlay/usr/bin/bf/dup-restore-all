@@ -23,7 +23,7 @@ bf-echo "Restoring entire backup..."
 PASSPHRASE=${BACKUP_DUPLICITY_PASSPHRASE} \
     duplicity restore \
     --allow-source-mismatch \
-    --archive-dir ${DUPLICITY_CONFIG} \
+    --archive-dir ${DUPLICITY_ARCHIVE} \
     --progress \
     "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" \
     "${BACKUP_RESTORE}"
