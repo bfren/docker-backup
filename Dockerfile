@@ -6,6 +6,8 @@ ARG BF_IMAGE
 ARG BF_VERSION
 
 ENV \
+    # backup command to run on the cron schedule (default: dup-default) - technically you can put anything you want here
+    BACKUP_COMMAND=dup-default \
     # cron-compatible schedule (see e.g. https://crontab.guru) - default every day at midnight
     BACKUP_CRON="0 0 * * *" \
     # used to encrypt backup data - if not set, backup will not be run

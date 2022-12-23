@@ -11,12 +11,19 @@ export BF_E=`basename ${0}`
 BACKUP_CONFIG=/config
 bf-env "BACKUP_CONFIG" "${BACKUP_CONFIG}"
 
-bf-env "DUPLICITY_CONFIG" "${BACKUP_CONFIG}/duplicity"
-bf-env "DUPLICITY_EXCLUSIONS" "${BACKUP_CONFIG}/exclusions.txt"
-bf-env "DUPLICITY_LOG" "${BACKUP_CONFIG}/duplicity.log"
+BACKUP_CONFIG_DUPLICITY="${BACKUP_CONFIG}/duplicity"
+bf-env "BACKUP_CONFIG_DUPLICITY" "${BACKUP_CONFIG_DUPLICITY}"
+bf-env "DUPLICITY_ARCHIVE" "${BACKUP_CONFIG_DUPLICITY}/archive"
+bf-env "DUPLICITY_EXCLUSIONS" "${BACKUP_CONFIG_DUPLICITY}/exclusions.txt"
+bf-env "DUPLICITY_LOG" "${BACKUP_CONFIG_DUPLICITY}/duplicity.log"
 
-bf-env "RCLONE_CONFIG" "${BACKUP_CONFIG}/rclone.conf"
+BACKUP_CONFIG_RCLONE="${BACKUP_CONFIG}/rclone"
+bf-env "BACKUP_CONFIG_RCLONE" "${BACKUP_CONFIG_RCLONE}"
+bf-env "RCLONE_CONFIG" "${BACKUP_CONFIG_RCLONE}/rclone.conf"
+bf-env "RCLONE_EXCLUSIONS" "${BACKUP_CONFIG_RCLONE}/exclusions.conf"
+bf-env "RCLONE_LOG" "${BACKUP_CONFIG_RCLONE}/operations.log"
 
 bf-env "BACKUP_SOURCE" "/b"
+
 bf-env "BACKUP_RESTORE" "/restore"
 

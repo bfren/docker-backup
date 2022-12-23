@@ -5,7 +5,8 @@ export BF_E=`basename ${0}`
 
 
 #======================================================================================================================
-# Run rclone config (environment variables force rclone to use /config to store configuration file).
+# Run rclone config.
+# (Config file location is read from environment variables by rclone.)
 #======================================================================================================================
 
 rclone config
