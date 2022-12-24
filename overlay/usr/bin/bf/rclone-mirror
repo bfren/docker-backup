@@ -18,14 +18,14 @@ ${BF_LIB}/test-setup
 
 bf-echo "Executing rclone mirror..."
 rclone sync \
+    "${BACKUP_SOURCE}" \
+    "${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" \
     --checksum \                            # Skip based on checksum (if available) & size, not mod-time & size
     --delete-during \                       # When synchronizing, delete files on destination before transferring
     --delete-excluded \                     # Delete files on dest excluded from sync
     --exclude-from=${RCLONE_EXCLUSIONS} \   # Read file exclude patterns from file
     --log-file=${RCLONE_LOG} \              # Log everything to this file
-    --progress \                            # Show progress during transfer
-    "${BACKUP_SOURCE}" \
-    "${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}"
+    --progress                              # Show progress during transfer
 bf-done
 
 rclone size \
