@@ -25,3 +25,6 @@ rclone sync \
     "${BACKUP_SOURCE}" \
     "${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}"
 bf-done
+
+rclone size \
+    "${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}"
