@@ -18,6 +18,7 @@ ${BF_LIB}/test-setup
 #======================================================================================================================
 
 bf-echo "Verifying mirror..."
-rclone check "${BACKUP_SOURCE}" "${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" \
+RCLONE_CONFIG_PASS=${BACKUP_PASSPHRASE} \
+    rclone check "${BACKUP_SOURCE}" "${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" \
     --one-way
 bf-done

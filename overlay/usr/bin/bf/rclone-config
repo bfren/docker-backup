@@ -9,4 +9,5 @@ export BF_E=`basename ${0}`
 # (Config file location is read from environment variables by rclone.)
 #======================================================================================================================
 
-rclone config
+RCLONE_CONFIG_PASS=${BACKUP_PASSPHRASE} \
+    rclone config

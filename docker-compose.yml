@@ -6,7 +6,7 @@ services:
     container_name: backup
     restart: always
     environment:
-      - BACKUP_DUPLICITY_PASSPHRASE=some-random-string
+      - BACKUP_PASSPHRASE=some-random-string
       - BACKUP_RCLONE_STORAGE=dropbox
       - BACKUP_RCLONE_PATH=/Backup
     volumes:

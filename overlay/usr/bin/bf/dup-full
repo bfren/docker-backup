@@ -16,7 +16,7 @@ ${BF_LIB}/test-setup
 #======================================================================================================================
 
 bf-echo "Executing full backup..."
-PASSPHRASE=${BACKUP_DUPLICITY_PASSPHRASE} \
+PASSPHRASE=${BACKUP_PASSPHRASE} \
     duplicity full \
     --allow-source-mismatch \
     --archive-dir ${DUPLICITY_ARCHIVE} \

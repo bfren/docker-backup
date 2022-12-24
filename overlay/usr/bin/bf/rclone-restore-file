@@ -30,7 +30,8 @@ FILENAME=`basename ${FILE_TO_RESTORE}`
 ${BF_LIB}/clear-restore
 
 bf-echo "Restoring /${FILE_TO_RESTORE}..."
-rclone copyto "${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}/${FILE_TO_RESTORE}" "${BACKUP_RESTORE}/${FILENAME}" \
+RCLONE_CONFIG_PASS=${BACKUP_PASSPHRASE} \
+    rclone copyto "${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}/${FILE_TO_RESTORE}" "${BACKUP_RESTORE}/${FILENAME}" \
     --log-file=${RCLONE_LOG} \
     --progress
 bf-done

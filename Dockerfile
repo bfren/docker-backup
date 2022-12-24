@@ -10,8 +10,8 @@ ENV \
     BACKUP_COMMAND=dup-default \
     # cron-compatible schedule (see e.g. https://crontab.guru) - default every day at midnight
     BACKUP_CRON="0 0 * * *" \
-    # used to encrypt backup data - if not set, backup will not be run
-    BACKUP_DUPLICITY_PASSPHRASE= \
+    # used to encrypt backup configuration and data - if not set, backup cannot be run
+    BACKUP_PASSPHRASE= \
     # how often to run a full backup (default: one month - see https://duplicity.gitlab.io/stable/duplicity.1.html#time-formats)
     BACKUP_DUPLICITY_FULL_EVERY=1M \
     # the number of full backups to keep
