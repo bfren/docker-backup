@@ -27,9 +27,7 @@ FILENAME=`basename ${FILE_TO_RESTORE}`
 ${BF_LIB}/clear-restore
 
 bf-echo "Restoring /${FILE_TO_RESTORE}..."
-rclone copyto \
-    "${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}/${FILE_TO_RESTORE}" \
-    "${BACKUP_RESTORE}/${FILENAME}" \
+rclone copyto "${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}/${FILE_TO_RESTORE}" "${BACKUP_RESTORE}/${FILENAME}" \
     --log-file=${RCLONE_LOG} \              # Log everything to this file
     --progress                              # Show progress during transfer
 bf-done

@@ -17,6 +17,5 @@ ${BF_LIB}/test-setup
 #======================================================================================================================
 
 bf-echo "Listing all files in configured rclone storage..."
-rclone tree \
-    "${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}"
+rclone tree "${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}"
 bf-done
