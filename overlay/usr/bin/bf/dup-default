@@ -31,7 +31,7 @@ bf-done
 # Remove old backup files.
 #======================================================================================================================
 
-bf-echo "Removing old backups (keeping: ${DUPLICITY_KEEP_FULL} full backups)..."
+bf-echo "Removing old backups (keeping: ${BACKUP_DUPLICITY_KEEP_FULL} full backups)..."
 PASSPHRASE=${BACKUP_DUPLICITY_PASSPHRASE} \
     duplicity remove-all-but-n-full ${BACKUP_DUPLICITY_KEEP_FULL} \
     --allow-source-mismatch \
