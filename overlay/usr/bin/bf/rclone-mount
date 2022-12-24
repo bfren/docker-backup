@@ -1,0 +1,26 @@
+#!/command/with-contenv sh
+
+set -euo pipefail
+export BF_E=`basename ${0}`
+
+
+#======================================================================================================================
+# Test setup.
+#======================================================================================================================
+
+${BF_LIB}/test-setup
+
+
+#======================================================================================================================
+# Run rclone ls.
+# (Config file location is read from environment variables by rclone.)
+#======================================================================================================================
+
+${BF_LIB}/clear-restore
+
+bf-echo "Mounting rclone remote storage..."
+rclone mount \
+    --daemon \
+    "${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" \
+    "${BACKUP_RESTORE}"
+bf-done
