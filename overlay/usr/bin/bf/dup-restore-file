@@ -24,17 +24,15 @@ FILENAME=`basename ${FILE_TO_RESTORE}`
 # Restore specified file.
 #======================================================================================================================
 
-bf-echo "Removing everything in ${BACKUP_RESTORE}..."
-bf-rmrf ${BACKUP_RESTORE}/*
-bf-done
+${BF_LIB}/clear-restore
 
-bf-echo "Restoring file ${FILE_TO_RESTORE}..."
+bf-echo "Restoring /${FILE_TO_RESTORE}..."
 PASSPHRASE=${BACKUP_DUPLICITY_PASSPHRASE} \
     duplicity restore \
     --allow-source-mismatch \
-    --archive-dir ${DUPLICITY_CONFIG} \
+    --archive-dir ${DUPLICITY_ARCHIVE} \
     --file-to-restore "${FILE_TO_RESTORE}" \
-    --log-file ${DUPLICITY_LOG} \
+    --progress \
     "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" \
     "${BACKUP_RESTORE}/${FILENAME}"
 bf-done

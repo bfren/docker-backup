@@ -12,16 +12,10 @@ ${BF_LIB}/test-setup
 
 
 #======================================================================================================================
-# Verify backup.
+# List all files in rclone storage as a tree.
+# (Config file location is read from environment variables by rclone.)
 #======================================================================================================================
 
-bf-echo "Verifying backup..."
-PASSPHRASE=${BACKUP_DUPLICITY_PASSPHRASE} \
-    duplicity verify \
-    --allow-source-mismatch \
-    --archive-dir ${DUPLICITY_ARCHIVE} \
-    --exclude-filelist ${DUPLICITY_EXCLUSIONS} \
-    --progress \
-    "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" \
-    "${BACKUP_SOURCE}"
+bf-echo "Listing all files in configured rclone storage..."
+rclone tree "${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}"
 bf-done

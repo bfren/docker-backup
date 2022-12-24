@@ -12,31 +12,25 @@ ${BF_LIB}/test-setup
 
 
 #======================================================================================================================
-# Execute backup.
+# Get file to restore.
 #======================================================================================================================
 
-bf-echo "Executing backup..."
-PASSPHRASE=${BACKUP_DUPLICITY_PASSPHRASE} \
-    duplicity \
-    --allow-source-mismatch \
-    --archive-dir ${DUPLICITY_ARCHIVE} \
-    --exclude-filelist ${DUPLICITY_EXCLUSIONS} \
-    --full-if-older-than ${BACKUP_DUPLICITY_FULL_EVERY} \
-    --log-file ${DUPLICITY_LOG} \
-    "${BACKUP_SOURCE}" "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}"
-bf-done
+[[ -z "${1-}" ]] && bf-error "You must specify the file to restore."
+FILE_TO_RESTORE=${1}
+FILENAME=`basename ${FILE_TO_RESTORE}`
 
 
 #======================================================================================================================
-# Remove old backup files.
+# Restore specified file.
+# Arguments:
+#   --log-file          Log everything to this file
+#   --progress          Show progress during transfer
 #======================================================================================================================
 
-bf-echo "Removing old backups (keeping: ${BACKUP_DUPLICITY_KEEP_FULL} full backups)..."
-PASSPHRASE=${BACKUP_DUPLICITY_PASSPHRASE} \
-    duplicity remove-all-but-n-full ${BACKUP_DUPLICITY_KEEP_FULL} \
-    --allow-source-mismatch \
-    --archive-dir ${DUPLICITY_ARCHIVE} \
-    --force \
-    --log-file ${DUPLICITY_LOG} \
-    "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}"
+${BF_LIB}/clear-restore
+
+bf-echo "Restoring /${FILE_TO_RESTORE}..."
+rclone copyto "${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}/${FILE_TO_RESTORE}" "${BACKUP_RESTORE}/${FILENAME}" \
+    --log-file=${RCLONE_LOG} \
+    --progress
 bf-done

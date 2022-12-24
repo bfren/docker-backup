@@ -5,13 +5,9 @@ export BF_E=`basename ${0}`
 
 
 #======================================================================================================================
-# Generate crontab and append backup task.
+# Clear everything in /restore.
 #======================================================================================================================
 
-bf-echo "Generating crontab..."
-CRONTAB=/etc/crontabs/root
-bf-esh \
-    ${BF_TEMPLATES}/crontab.esh \
-    ${CRONTAB}
-echo "${BACKUP_CRON} ${BACKUP_COMMAND}" >> ${CRONTAB}
+bf-echo "Removing everything in ${BACKUP_RESTORE}..."
+bf-rmrf "${BACKUP_RESTORE}/*"
 bf-done

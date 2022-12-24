@@ -19,7 +19,8 @@ bf-echo "Executing full backup..."
 PASSPHRASE=${BACKUP_DUPLICITY_PASSPHRASE} \
     duplicity full \
     --allow-source-mismatch \
-    --archive-dir ${DUPLICITY_CONFIG} \
-    --log-file ${DUPLICITY_LOG} \
+    --archive-dir ${DUPLICITY_ARCHIVE} \
+    --exclude-filelist ${DUPLICITY_EXCLUSIONS} \
+    --progress \
     "${BACKUP_SOURCE}" "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}"
 bf-done

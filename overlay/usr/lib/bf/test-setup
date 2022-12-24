@@ -5,24 +5,41 @@ export BF_E=`basename ${0}`
 
 
 #======================================================================================================================
-# Check for passphrase.
+# Verify duplicity and rclone setup.
 #======================================================================================================================
 
-bf-debug "Verifying setup."
+bf-debug "Verifying setup..."
+
+
+#======================================================================================================================
+# Verify duplicity setup.
+#======================================================================================================================
+
+bf-debug " .. duplicity"
 
 [[ -z "${BACKUP_DUPLICITY_PASSPHRASE-}" ]] \
     && bf-error "You must define BACKUP_DUPLICITY_PASSPHRASE." "test-setup"
 
+mkdir -p ${DUPLICITY_ARCHIVE}
+touch ${DUPLICITY_EXCLUSIONS}
+touch ${DUPLICITY_LOG}
+
 
 #======================================================================================================================
-# Verify rclone configuration.
+# Verify rclone setup.
 #======================================================================================================================
+
+bf-debug " .. rclone"
 
 [[ -f ${RCLONE_CONFIG} ]] \
     || bf-error "rclone configuration not found." "test-setup"
 
 [[ ${BF_LIB}/test-rclone-storage ]] \
     || bf-error "rclone storage '${BACKUP_RCLONE_STORAGE}' is not defined." "test-setup"
+
+mkdir -p ${BACKUP_CONFIG_RCLONE}
+touch ${RCLONE_EXCLUSIONS}
+touch ${RCLONE_LOG}
 
 
 #======================================================================================================================
