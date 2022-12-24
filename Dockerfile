@@ -19,7 +19,9 @@ ENV \
     # the name of the (configured) rclone storage provider
     BACKUP_RCLONE_STORAGE= \
     # path within storage provider for putting backups - should start with a slash but must not end with one
-    BACKUP_RCLONE_PATH=
+    BACKUP_RCLONE_PATH= \
+    # skip based on checksum (if available) & size, not mod-time & size (to disable set RCLONE_CHECKSUM=false)
+    RCLONE_CHECKSUM=true
 
 COPY ./overlay /
 

@@ -25,7 +25,6 @@ ${BF_LIB}/test-setup
 
 bf-echo "Executing rclone mirror..."
 rclone sync "${BACKUP_SOURCE}" "${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" \
-    --checksum \
     --delete-during \
     --delete-excluded \
     --exclude-from=${RCLONE_EXCLUSIONS} \
