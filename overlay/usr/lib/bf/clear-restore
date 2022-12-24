@@ -9,5 +9,5 @@ export BF_E=`basename ${0}`
 #======================================================================================================================
 
 bf-echo "Removing everything in ${BACKUP_RESTORE}..."
-bf-rmrf ${BACKUP_RESTORE}/*
+bf-rmrf "${BACKUP_RESTORE}/*"
 bf-done
