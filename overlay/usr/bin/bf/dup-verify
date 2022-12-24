@@ -16,7 +16,7 @@ ${BF_LIB}/test-setup
 #======================================================================================================================
 
 bf-echo "Verifying backup..."
-PASSPHRASE=${BACKUP_DUPLICITY_PASSPHRASE} \
+PASSPHRASE=${BACKUP_PASSPHRASE} \
     duplicity verify \
     --allow-source-mismatch \
     --archive-dir ${DUPLICITY_ARCHIVE} \

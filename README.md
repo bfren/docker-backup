@@ -49,11 +49,13 @@ docker exec backup dup-restore-file /path/to/file/or/directory
 | Variable                      | Values  | Description                                                                                                    | Default                              |
 | ----------------------------- | ------- | -------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
 | `BACKUP_CRON`                 | string  | Cron schedule on which backup will be run.                                                                     | 0 0 \* \* \* - every day at midnight |
-| `BACKUP_DUPLICITY_PASSPHRASE` | string  | End-to-end encryption passphrase - if changed, backups cannot be restored.                                     | *None* - required                    |
+| `BACKUP_PASSPHRASE`           | string  | End-to-end encryption passphrase - if changed, backups cannot be restored.                                     | *None* - required                    |
 | `BACKUP_DUPLICITY_FULL_EVERY` | string  | How often to run a full backup (see [here](https://duplicity.gitlab.io/stable/duplicity.1.html#time-formats)). | 1M - one month                       |
 | `BACKUP_DUPLICITY_KEEP_FULL`  | integer | How many full backups to keep - more than this will be removed as part of the schedule.                        | 3                                    |
 | `BACKUP_RCLONE_STORAGE`       | string  | The name of the (configured) rclone storage provider.                                                          | *None* - required                    |
 | `BACKUP_RCLONE_PATH`          | string  | The root path within the storage provider in which to put backup files.                                        | /                                    |
+
+Additionally you can use `RCLONE_` to [configure rclone](https://rclone.org/docs/#environment-variables).
 
 ## Licence
 

@@ -5,10 +5,13 @@ export BF_E=`basename ${0}`
 
 
 #======================================================================================================================
-# Verify duplicity and rclone setup.
+# Verify passphrase.
 #======================================================================================================================
 
 bf-debug "Verifying setup..."
+
+[[ -z "${BACKUP_PASSPHRASE-}" ]] \
+    && bf-error "You must define BACKUP_PASSPHRASE." "test-setup"
 
 
 #======================================================================================================================
@@ -16,9 +19,6 @@ bf-debug "Verifying setup..."
 #======================================================================================================================
 
 bf-debug " .. duplicity"
-
-[[ -z "${BACKUP_DUPLICITY_PASSPHRASE-}" ]] \
-    && bf-error "You must define BACKUP_DUPLICITY_PASSPHRASE." "test-setup"
 
 mkdir -p ${DUPLICITY_ARCHIVE}
 touch ${DUPLICITY_EXCLUSIONS}

@@ -18,7 +18,7 @@ ${BF_LIB}/test-setup
 ${BF_LIB}/clear-restore
 
 bf-echo "Restoring entire backup..."
-PASSPHRASE=${BACKUP_DUPLICITY_PASSPHRASE} \
+PASSPHRASE=${BACKUP_PASSPHRASE} \
     duplicity restore \
     --allow-source-mismatch \
     --archive-dir ${DUPLICITY_ARCHIVE} \

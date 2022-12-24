@@ -16,7 +16,7 @@ ${BF_LIB}/test-setup
 #======================================================================================================================
 
 bf-echo "Executing incremental backup..."
-PASSPHRASE=${BACKUP_DUPLICITY_PASSPHRASE} \
+PASSPHRASE=${BACKUP_PASSPHRASE} \
     duplicity incr \
     --allow-source-mismatch \
     --archive-dir ${DUPLICITY_ARCHIVE} \

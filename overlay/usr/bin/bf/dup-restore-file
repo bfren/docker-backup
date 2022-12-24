@@ -27,7 +27,7 @@ FILENAME=`basename ${FILE_TO_RESTORE}`
 ${BF_LIB}/clear-restore
 
 bf-echo "Restoring /${FILE_TO_RESTORE}..."
-PASSPHRASE=${BACKUP_DUPLICITY_PASSPHRASE} \
+PASSPHRASE=${BACKUP_PASSPHRASE} \
     duplicity restore \
     --allow-source-mismatch \
     --archive-dir ${DUPLICITY_ARCHIVE} \
