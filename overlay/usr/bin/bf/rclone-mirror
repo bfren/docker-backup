@@ -16,6 +16,7 @@ ${BF_LIB}/test-setup
 # (Config file location is read from environment variables by rclone.)
 #======================================================================================================================
 
+bf-echo "Executing rclone mirror..."
 rclone sync \
     --delete-during \
     --delete-excluded \
@@ -23,3 +24,4 @@ rclone sync \
     --log-file=${RCLONE_LOG} \
     "${BACKUP_SOURCE}" \
     "${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}"
+bf-done
