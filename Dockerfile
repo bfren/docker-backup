@@ -18,8 +18,8 @@ ENV \
     BACKUP_DUPLICITY_KEEP_FULL=3 \
     # the name of the (configured) rclone storage provider
     BACKUP_RCLONE_STORAGE= \
-    # path within storage provider for putting backups - should start with a slash
-    BACKUP_RCLONE_PATH=/
+    # path within storage provider for putting backups - should start with a slash but must not end with one
+    BACKUP_RCLONE_PATH=
 
 COPY ./overlay /
 

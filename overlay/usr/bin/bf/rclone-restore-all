@@ -12,12 +12,15 @@ ${BF_LIB}/test-setup
 
 
 #======================================================================================================================
-# Verify mirror.
+# Restore specified file.
 #======================================================================================================================
 
-bf-echo "Verifying mirror..."
-rclone check \
-    --one-way \                             # Check one way only, source files must exist on remote
-    "${BACKUP_SOURCE}" \
-    "${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}"
+${BF_LIB}/clear-restore
+
+bf-echo "Restoring entire mirror..."
+rclone copy \
+    --log-file=${RCLONE_LOG} \              # Log everything to this file
+    --progress \                            # Show progress during transfer
+    "${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" \
+    "${BACKUP_RESTORE}"
 bf-done
