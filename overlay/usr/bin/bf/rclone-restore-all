@@ -19,6 +19,8 @@ ${BF_LIB}/clear-restore
 
 bf-echo "Restoring entire mirror..."
 rclone copy "${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" "${BACKUP_RESTORE}" \
-    --log-file=${RCLONE_LOG} \              # Log everything to this file
-    --progress                              # Show progress during transfer
+    # Log everything to this file
+    --log-file=${RCLONE_LOG} \
+    # Show progress during transfer
+    --progress
 bf-done

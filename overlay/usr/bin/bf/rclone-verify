@@ -17,5 +17,6 @@ ${BF_LIB}/test-setup
 
 bf-echo "Verifying mirror..."
 rclone check "${BACKUP_SOURCE}" "${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" \
-    --one-way                               # Check one way only, source files must exist on remote
+    # Check one way only, source files must exist on remote
+    --one-way
 bf-done
