@@ -15,9 +15,7 @@ ${BF_LIB}/test-setup
 # Restore entire backup.
 #======================================================================================================================
 
-bf-echo "Removing everything in ${BACKUP_RESTORE}..."
-bf-rmrf ${BACKUP_RESTORE}/*
-bf-done
+${BF_LIB}/clear-restore
 
 bf-echo "Restoring entire backup..."
 PASSPHRASE=${BACKUP_DUPLICITY_PASSPHRASE} \

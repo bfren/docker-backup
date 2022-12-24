@@ -24,9 +24,7 @@ FILENAME=`basename ${FILE_TO_RESTORE}`
 # Restore specified file.
 #======================================================================================================================
 
-bf-echo "Removing everything in ${BACKUP_RESTORE}..."
-bf-rmrf ${BACKUP_RESTORE}/*
-bf-done
+${BF_LIB}/clear-restore
 
 bf-echo "Restoring /${FILE_TO_RESTORE}..."
 PASSPHRASE=${BACKUP_DUPLICITY_PASSPHRASE} \
