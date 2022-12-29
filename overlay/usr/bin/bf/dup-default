@@ -16,8 +16,7 @@ ${BF_LIB}/test-setup
 #======================================================================================================================
 
 bf-echo "Executing backup..."
-PASSPHRASE=${BACKUP_PASSPHRASE} \
-    duplicity \
+duplicity \
     --allow-source-mismatch \
     --archive-dir ${DUPLICITY_ARCHIVE} \
     --exclude-filelist ${DUPLICITY_EXCLUSIONS} \
@@ -32,8 +31,7 @@ bf-done
 #======================================================================================================================
 
 bf-echo "Removing old backups (keeping: ${BACKUP_DUPLICITY_KEEP_FULL} full backups)..."
-PASSPHRASE=${BACKUP_PASSPHRASE} \
-    duplicity remove-all-but-n-full ${BACKUP_DUPLICITY_KEEP_FULL} \
+duplicity remove-all-but-n-full ${BACKUP_DUPLICITY_KEEP_FULL} \
     --allow-source-mismatch \
     --archive-dir ${DUPLICITY_ARCHIVE} \
     --force \

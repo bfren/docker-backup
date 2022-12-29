@@ -27,3 +27,10 @@ bf-env "BACKUP_SOURCE" "/b"
 
 bf-env "BACKUP_RESTORE" "/restore"
 
+
+#======================================================================================================================
+# Set passphrase for duplicity and rclone.
+#======================================================================================================================
+
+bf-env "PASSPHRASE" "${BACKUP_PASSPHRASE-}"
+bf-env "RCLONE_CONFIG_PASS" "${BACKUP_PASSPHRASE-}"
