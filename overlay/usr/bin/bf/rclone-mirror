@@ -24,8 +24,7 @@ ${BF_LIB}/test-setup
 #======================================================================================================================
 
 bf-echo "Executing rclone mirror..."
-RCLONE_CONFIG_PASS=${BACKUP_PASSPHRASE} \
-    rclone sync "${BACKUP_SOURCE}" "${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" \
+rclone sync "${BACKUP_SOURCE}" "${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" \
     --delete-during \
     --delete-excluded \
     --exclude-from=${RCLONE_EXCLUSIONS} \
@@ -33,6 +32,5 @@ RCLONE_CONFIG_PASS=${BACKUP_PASSPHRASE} \
     --progress
 bf-done
 
-RCLONE_CONFIG_PASS=${BACKUP_PASSPHRASE} \
-    rclone size \
+rclone size \
     "${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}"

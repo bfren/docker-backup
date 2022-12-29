@@ -16,8 +16,7 @@ ${BF_LIB}/test-setup
 #======================================================================================================================
 
 bf-echo "Listing files currently included in the backup..."
-PASSPHRASE=${BACKUP_PASSPHRASE} \
-    duplicity list-current-files \
+duplicity list-current-files \
     --allow-source-mismatch \
     --archive-dir ${DUPLICITY_ARCHIVE} \
     --log-file ${DUPLICITY_LOG} \

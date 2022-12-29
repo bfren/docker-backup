@@ -9,5 +9,4 @@ export BF_E=`basename ${0}`
 #======================================================================================================================
 
 bf-debug "Testing rclone config for storage provider ${BACKUP_RCLONE_STORAGE}."
-RCLONE_CONFIG_PASS=${BACKUP_PASSPHRASE} \
-    rclone config show ${BACKUP_RCLONE_STORAGE} > /dev/null 2>&1
+rclone config show ${BACKUP_RCLONE_STORAGE} > /dev/null 2>&1
