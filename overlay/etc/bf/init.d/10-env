@@ -10,7 +10,7 @@ export BF_E=`basename ${0}`
 
 BACKUP_CONFIG=/config
 bf-env "BACKUP_CONFIG" "${BACKUP_CONFIG}"
-bf-env "BACKUP_LAST_OPERATION_LOG" "${BACKUP_CONFIG}/last.log"
+bf-env "BACKUP_LAST_CRON_LOG" "${BACKUP_CONFIG}/last-cron.log"
 bf-env "BACKUP_OPERATIONS_LOG" "${BACKUP_CONFIG}/operations.log"
 
 BACKUP_CONFIG_DUPLICITY="${BACKUP_CONFIG}/duplicity"

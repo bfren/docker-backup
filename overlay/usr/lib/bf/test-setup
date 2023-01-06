@@ -10,7 +10,7 @@ set -euo pipefail
 bf-debug "Verifying setup..." "test-setup"
 bf-debug " .. operations logs" "test-setup"
 
-touch ${BACKUP_LAST_OPERATION_LOG}
+touch ${BACKUP_LAST_CRON_LOG}
 touch ${BACKUP_OPERATIONS_LOG}
 
 
