@@ -4,10 +4,21 @@ set -euo pipefail
 
 
 #======================================================================================================================
-# Verify passphrase.
+# Verify operations log files.
 #======================================================================================================================
 
 bf-debug "Verifying setup..." "test-setup"
+bf-debug " .. operations logs" "test-setup"
+
+touch ${BACKUP_LAST_OPERATION_LOG}
+touch ${BACKUP_OPERATIONS_LOG}
+
+
+#======================================================================================================================
+# Verify passphrase.
+#======================================================================================================================
+
+bf-debug " .. passphrase" "test-setup"
 
 [[ -z "${BACKUP_PASSPHRASE-}" ]] \
     && bf-error "You must define BACKUP_PASSPHRASE." "test-setup"
