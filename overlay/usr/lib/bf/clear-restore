@@ -1,13 +1,12 @@
 #!/command/with-contenv sh
 
 set -euo pipefail
-export BF_E=`basename ${0}`
 
 
 #======================================================================================================================
 # Clear everything in /restore.
 #======================================================================================================================
 
-bf-echo "Removing everything in ${BACKUP_RESTORE}..."
+bf-echo "Removing everything in ${BACKUP_RESTORE}..." "clear-restore"
 bf-rmrf "${BACKUP_RESTORE}/*"
-bf-done
+bf-done "clear-restore"

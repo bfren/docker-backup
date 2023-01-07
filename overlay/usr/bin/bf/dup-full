@@ -9,6 +9,7 @@ export BF_E=`basename ${0}`
 #======================================================================================================================
 
 ${BF_LIB}/test-setup
+${BF_LIB}/log-starting
 
 
 #======================================================================================================================
@@ -23,3 +24,5 @@ duplicity full \
     --progress \
     "${BACKUP_SOURCE}" "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}"
 bf-done
+
+${BF_LIB}/log-done

@@ -1,14 +1,24 @@
 #!/command/with-contenv sh
 
 set -euo pipefail
-export BF_E=`basename ${0}`
+
+
+#======================================================================================================================
+# Verify operations log files.
+#======================================================================================================================
+
+bf-debug "Verifying setup..." "test-setup"
+bf-debug " .. operations logs" "test-setup"
+
+touch ${BACKUP_LAST_CRON_LOG}
+touch ${BACKUP_OPERATIONS_LOG}
 
 
 #======================================================================================================================
 # Verify passphrase.
 #======================================================================================================================
 
-bf-debug "Verifying setup..."
+bf-debug " .. passphrase" "test-setup"
 
 [[ -z "${BACKUP_PASSPHRASE-}" ]] \
     && bf-error "You must define BACKUP_PASSPHRASE." "test-setup"
@@ -18,7 +28,7 @@ bf-debug "Verifying setup..."
 # Verify duplicity setup.
 #======================================================================================================================
 
-bf-debug " .. duplicity"
+bf-debug " .. duplicity" "test-setup"
 
 mkdir -p ${DUPLICITY_ARCHIVE}
 touch ${DUPLICITY_EXCLUSIONS}
@@ -29,7 +39,7 @@ touch ${DUPLICITY_LOG}
 # Verify rclone setup.
 #======================================================================================================================
 
-bf-debug " .. rclone"
+bf-debug " .. rclone" "test-setup"
 
 [[ -f ${RCLONE_CONFIG} ]] \
     || bf-error "rclone configuration not found." "test-setup"
@@ -46,4 +56,4 @@ touch ${RCLONE_LOG}
 # Done.
 #======================================================================================================================
 
-bf-debug "Test complete."
+bf-debug "Test complete." "test-setup"

@@ -4,8 +4,7 @@ set -euo pipefail
 
 
 #======================================================================================================================
-# Verify rclone configuration (returns non-zero if BACKUP_RCLONE_STORAGE does not exist).
+# Log current operation done (name contained in BF_E).
 #======================================================================================================================
 
-bf-debug "Testing rclone config for storage provider ${BACKUP_RCLONE_STORAGE}." "test-rclone-storage"
-rclone config show ${BACKUP_RCLONE_STORAGE} > /dev/null 2>&1
+bf-done >> ${BACKUP_OPERATIONS_LOG}
