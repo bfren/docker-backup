@@ -39,7 +39,7 @@ rclone sync "${BACKUP_SOURCE}" "${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" 
     --delete-excluded \
     --exclude-from=${RCLONE_EXCLUSIONS} \
     --log-file=${RCLONE_LOG} \
-    ${ADDITIONAL_ARGS}
+    ${ADDITIONAL_ARGS-}
 bf-done
 
 rclone size \

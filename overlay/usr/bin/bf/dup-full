@@ -31,7 +31,7 @@ duplicity full \
     --archive-dir ${DUPLICITY_ARCHIVE} \
     --exclude-filelist ${DUPLICITY_EXCLUSIONS} \
     --volsize ${BACKUP_DUPLICITY_VOLSIZE_IN_MB} \
-    ${ADDITIONAL_ARGS} \
+    ${ADDITIONAL_ARGS-} \
     "${BACKUP_SOURCE}" "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}"
 bf-done
 

@@ -36,7 +36,7 @@ fi
 bf-echo "Executing rclone ${CMD}..."
 rclone ${BACKUP_RCLONE_CUSTOM_CMD} "${BACKUP_SOURCE}" "${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" \
     ${BACKUP_RCLONE_CUSTOM_ARG} \
-    ${ADDITIONAL_ARGS}
+    ${ADDITIONAL_ARGS-}
 bf-done
 
 ${BF_LIB}/log-done
