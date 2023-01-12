@@ -19,8 +19,8 @@ ${BF_LIB}/log-starting
 bf-echo "Listing files currently included in the backup..."
 duplicity list-current-files \
     --allow-source-mismatch \
-    --archive-dir ${DUPLICITY_ARCHIVE} \
-    --log-file ${DUPLICITY_LOG} \
+    --archive-dir ${BACKUP_DUPLICITY_ARCHIVE} \
+    --log-file ${BACKUP_DUPLICITY_LOG} \
     "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}"
 bf-done
 

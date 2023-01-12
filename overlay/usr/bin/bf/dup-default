@@ -28,10 +28,10 @@ fi
 bf-echo "Executing backup..."
 duplicity \
     --allow-source-mismatch \
-    --archive-dir ${DUPLICITY_ARCHIVE} \
-    --exclude-filelist ${DUPLICITY_EXCLUSIONS} \
+    --archive-dir ${BACKUP_DUPLICITY_ARCHIVE} \
+    --exclude-filelist ${BACKUP_DUPLICITY_EXCLUSIONS} \
     --full-if-older-than ${BACKUP_DUPLICITY_FULL_EVERY} \
-    --log-file ${DUPLICITY_LOG} \
+    --log-file ${BACKUP_DUPLICITY_LOG} \
     --volsize ${BACKUP_DUPLICITY_VOLSIZE_IN_MB} \
     ${ADDITIONAL_ARGS-} \
     "${BACKUP_SOURCE}" "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}"

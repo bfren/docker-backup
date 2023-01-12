@@ -28,8 +28,8 @@ fi
 bf-echo "Executing incremental backup..."
 duplicity incr \
     --allow-source-mismatch \
-    --archive-dir ${DUPLICITY_ARCHIVE} \
-    --exclude-filelist ${DUPLICITY_EXCLUSIONS} \
+    --archive-dir ${BACKUP_DUPLICITY_ARCHIVE} \
+    --exclude-filelist ${BACKUP_DUPLICITY_EXCLUSIONS} \
     --volsize ${BACKUP_DUPLICITY_VOLSIZE_IN_MB} \
     ${ADDITIONAL_ARGS-} \
     "${BACKUP_SOURCE}" "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}"

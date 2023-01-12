@@ -19,8 +19,8 @@ ${BF_LIB}/log-starting
 bf-echo "Verifying backup..."
 duplicity verify \
     --allow-source-mismatch \
-    --archive-dir ${DUPLICITY_ARCHIVE} \
-    --exclude-filelist ${DUPLICITY_EXCLUSIONS} \
+    --archive-dir ${BACKUP_DUPLICITY_ARCHIVE} \
+    --exclude-filelist ${BACKUP_DUPLICITY_EXCLUSIONS} \
     --progress \
     "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" \
     "${BACKUP_SOURCE}"

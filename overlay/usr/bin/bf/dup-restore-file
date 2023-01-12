@@ -30,7 +30,7 @@ ${BF_LIB}/clear-restore
 bf-echo "Restoring /${FILE_TO_RESTORE}..."
 duplicity restore \
     --allow-source-mismatch \
-    --archive-dir ${DUPLICITY_ARCHIVE} \
+    --archive-dir ${BACKUP_DUPLICITY_ARCHIVE} \
     --file-to-restore "${FILE_TO_RESTORE}" \
     --progress \
     "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" \

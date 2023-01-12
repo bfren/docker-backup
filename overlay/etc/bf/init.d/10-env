@@ -15,15 +15,12 @@ bf-env "BACKUP_OPERATIONS_LOG" "${BACKUP_CONFIG}/operations.log"
 
 BACKUP_CONFIG_DUPLICITY="${BACKUP_CONFIG}/duplicity"
 bf-env "BACKUP_CONFIG_DUPLICITY" "${BACKUP_CONFIG_DUPLICITY}"
-bf-env "DUPLICITY_ARCHIVE" "${BACKUP_CONFIG_DUPLICITY}/archive"
-bf-env "DUPLICITY_EXCLUSIONS" "${BACKUP_CONFIG_DUPLICITY}/exclusions.txt"
-bf-env "DUPLICITY_LOG" "${BACKUP_CONFIG_DUPLICITY}/log"
+bf-env "BACKUP_DUPLICITY_ARCHIVE" "${BACKUP_CONFIG_DUPLICITY}/archive"
+bf-env "BACKUP_DUPLICITY_EXCLUSIONS" "${BACKUP_CONFIG_DUPLICITY}/exclusions.txt"
+bf-env "BACKUP_DUPLICITY_LOG" "${BACKUP_CONFIG_DUPLICITY}/log"
 
 BACKUP_CONFIG_RCLONE="${BACKUP_CONFIG}/rclone"
 bf-env "BACKUP_CONFIG_RCLONE" "${BACKUP_CONFIG_RCLONE}"
-bf-env "RCLONE_CONFIG" "${BACKUP_CONFIG_RCLONE}/rclone.conf"
-bf-env "RCLONE_EXCLUSIONS" "${BACKUP_CONFIG_RCLONE}/exclusions.txt"
-bf-env "RCLONE_LOG" "${BACKUP_CONFIG_RCLONE}/log"
 
 bf-env "BACKUP_SOURCE" "/b"
 
@@ -31,8 +28,17 @@ bf-env "BACKUP_RESTORE" "/restore"
 
 
 #======================================================================================================================
-# Set passphrase for duplicity and rclone.
+# Set duplicity environment variables.
 #======================================================================================================================
 
 bf-env "PASSPHRASE" "${BACKUP_PASSPHRASE-}"
+
+
+#======================================================================================================================
+# Set rclone environment variables.
+#======================================================================================================================
+
+bf-env "RCLONE_CONFIG" "${BACKUP_CONFIG_RCLONE}/rclone.conf"
 bf-env "RCLONE_CONFIG_PASS" "${BACKUP_PASSPHRASE-}"
+bf-env "RCLONE_EXCLUSIONS" "${BACKUP_CONFIG_RCLONE}/exclusions.txt"
+bf-env "RCLONE_LOG_FILE" "${BACKUP_CONFIG_RCLONE}/log"
