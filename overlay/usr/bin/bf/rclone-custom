@@ -13,6 +13,15 @@ ${BF_LIB}/log-starting
 
 
 #======================================================================================================================
+# Get whether or not this is executing as a cron.
+#======================================================================================================================
+
+if [ "${CRON-}" -ne "1" ] ; then
+    ADDITIONAL_ARGS="--progress"
+fi
+
+
+#======================================================================================================================
 # Check custom rclone variables.
 #======================================================================================================================
 
@@ -26,7 +35,8 @@ ${BF_LIB}/log-starting
 
 bf-echo "Executing rclone ${CMD}..."
 rclone ${BACKUP_RCLONE_CUSTOM_CMD} "${BACKUP_SOURCE}" "${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" \
-    ${BACKUP_RCLONE_CUSTOM_ARG}
+    ${BACKUP_RCLONE_CUSTOM_ARG} \
+    ${ADDITIONAL_ARGS}
 bf-done
 
 ${BF_LIB}/log-done
