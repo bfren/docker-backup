@@ -23,6 +23,7 @@ duplicity \
     --exclude-filelist ${DUPLICITY_EXCLUSIONS} \
     --full-if-older-than ${BACKUP_DUPLICITY_FULL_EVERY} \
     --log-file ${DUPLICITY_LOG} \
+    --volsize ${BACKUP_DUPLICITY_VOLSIZE_IN_MB} \
     "${BACKUP_SOURCE}" "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}"
 bf-done
 

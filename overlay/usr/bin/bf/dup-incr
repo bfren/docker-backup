@@ -22,6 +22,7 @@ duplicity incr \
     --archive-dir ${DUPLICITY_ARCHIVE} \
     --exclude-filelist ${DUPLICITY_EXCLUSIONS} \
     --progress \
+    --volsize ${BACKUP_DUPLICITY_VOLSIZE_IN_MB} \
     "${BACKUP_SOURCE}" "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}"
 bf-done
 
