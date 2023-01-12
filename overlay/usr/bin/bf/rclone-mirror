@@ -16,7 +16,7 @@ ${BF_LIB}/log-starting
 # Get whether or not this is executing as a cron.
 #======================================================================================================================
 
-if [ "${CRON-}" -ne "1" ] ; then
+if [ ! "${CRON-}" = "1" ] ; then
     ADDITIONAL_ARGS="--progress"
 fi
 
