@@ -16,10 +16,15 @@ ENV \
     BACKUP_DUPLICITY_FULL_EVERY=1M \
     # the number of full backups to keep
     BACKUP_DUPLICITY_KEEP_FULL=3 \
+    # sets the duplicity volume size in MB (default: 200MB)
+    BACKUP_DUPLICITY_VOLSIZE_IN_MB=200 \
     # the name of the (configured) rclone storage provider
     BACKUP_RCLONE_STORAGE= \
     # path within storage provider for putting backups - should start with a slash but must not end with one
     BACKUP_RCLONE_PATH= \
+    # use in conjunction with BACKUP_COMMAND=rclone-custom to run rclone however you want
+    BACKUP_RCLONE_CUSTOM_CMD= \
+    BACKUP_RCLONE_CUSTOM_ARG= \
     # skip based on checksum (if available) & size, not mod-time & size (to disable set RCLONE_CHECKSUM=false)
     RCLONE_CHECKSUM=true
 
