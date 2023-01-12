@@ -21,7 +21,7 @@ ${BF_LIB}/clear-restore
 bf-echo "Restoring entire backup..."
 duplicity restore \
     --allow-source-mismatch \
-    --archive-dir ${DUPLICITY_ARCHIVE} \
+    --archive-dir ${BACKUP_DUPLICITY_ARCHIVE} \
     --progress \
     "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" \
     "${BACKUP_RESTORE}"

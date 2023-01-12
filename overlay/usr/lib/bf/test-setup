@@ -1,4 +1,4 @@
-#!/command/with-contenv sh
+#!/bin/sh
 
 set -euo pipefail
 
@@ -30,9 +30,9 @@ bf-debug " .. passphrase" "test-setup"
 
 bf-debug " .. duplicity" "test-setup"
 
-mkdir -p ${DUPLICITY_ARCHIVE}
-touch ${DUPLICITY_EXCLUSIONS}
-touch ${DUPLICITY_LOG}
+mkdir -p ${BACKUP_DUPLICITY_ARCHIVE}
+touch ${BACKUP_DUPLICITY_EXCLUSIONS}
+touch ${BACKUP_DUPLICITY_LOG}
 
 
 #======================================================================================================================
@@ -48,8 +48,8 @@ bf-debug " .. rclone" "test-setup"
     || bf-error "rclone storage '${BACKUP_RCLONE_STORAGE}' is not defined." "test-setup"
 
 mkdir -p ${BACKUP_CONFIG_RCLONE}
-touch ${RCLONE_EXCLUSIONS}
-touch ${RCLONE_LOG}
+touch ${BACKUP_RCLONE_EXCLUSIONS}
+touch ${BACKUP_RCLONE_LOG}
 
 
 #======================================================================================================================

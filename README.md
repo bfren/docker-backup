@@ -46,16 +46,20 @@ docker exec backup dup-restore-file /path/to/file/or/directory
 
 ## Environment Variables
 
-| Variable                      | Values  | Description                                                                                                    | Default                              |
-| ----------------------------- | ------- | -------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
-| `BACKUP_CRON`                 | string  | Cron schedule on which backup will be run.                                                                     | 0 0 \* \* \* - every day at midnight |
-| `BACKUP_PASSPHRASE`           | string  | End-to-end encryption passphrase - if changed, backups cannot be restored.                                     | *None* - required                    |
-| `BACKUP_DUPLICITY_FULL_EVERY` | string  | How often to run a full backup (see [here](https://duplicity.gitlab.io/stable/duplicity.1.html#time-formats)). | 1M - one month                       |
-| `BACKUP_DUPLICITY_KEEP_FULL`  | integer | How many full backups to keep - more than this will be removed as part of the schedule.                        | 3                                    |
-| `BACKUP_RCLONE_STORAGE`       | string  | The name of the (configured) rclone storage provider.                                                          | *None* - required                    |
-| `BACKUP_RCLONE_PATH`          | string  | The root path within the storage provider in which to put backup files.                                        | /                                    |
+| Variable                          | Values  | Description                                                                                                    | Default                              |
+| --------------------------------- | ------- | -------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
+| `BACKUP_COMMAND`                  | string  | The command to run on the schedule set by `BACKUP_CRON`.                                                       | dup-default                          |
+| `BACKUP_CRON`                     | string  | Cron schedule on which backup will be run.                                                                     | 0 0 \* \* \* - every day at midnight |
+| `BACKUP_PASSPHRASE`               | string  | End-to-end encryption passphrase - if changed, backups cannot be restored.                                     | *None* - required                    |
+| `BACKUP_DUPLICITY_FULL_EVERY`     | string  | How often to run a full backup (see [here](https://duplicity.gitlab.io/stable/duplicity.1.html#time-formats)). | 1M - one month                       |
+| `BACKUP_DUPLICITY_KEEP_FULL`      | integer | How many full backups to keep - more than this will be removed as part of the schedule.                        | 3                                    |
+| `BACKUP_DUPLICITY_VOLSIZE_IN_MB`  | integer | The size (in MB) of each volume in the backup set.                                                             | 200                                  |
+| `BACKUP_RCLONE_STORAGE`           | string  | The name of the (configured) rclone storage provider.                                                          | *None* - required                    |
+| `BACKUP_RCLONE_PATH`              | string  | The root path within the storage provider in which to put backup files.                                        | /                                    |
+| `BACKUP_RCLONE_CUSTOM_CMD`        | string  | Use with BACKUP_COMMAND=rclone-custom to run rclone however you want using the configuration in `/config`.     | *None*                               |
+| `BACKUP_RCLONE_CUSTOM_ARG`        | string  | Use with BACKUP_COMMAND=rclone-custom to run rclone however you want using the configuration in `/config`.     | *None*                               |
 
-Additionally you can use `RCLONE_` to [configure rclone](https://rclone.org/docs/#environment-variables).
+Additionally you can use `RCLONE_` to [configure rclone](https://rclone.org/docs/#environment-variables).  By default `RCLONE_CHECKSUM` is `true` to enable file checking based on checksum and date, not size.
 
 ## Licence
 
@@ -63,4 +67,4 @@ Additionally you can use `RCLONE_` to [configure rclone](https://rclone.org/docs
 
 ## Copyright
 
-> Copyright (c) 2022 [bfren](https://bfren.dev) (unless otherwise stated)
+> Copyright (c) 2022-2023 [bfren](https://bfren.dev) (unless otherwise stated)

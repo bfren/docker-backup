@@ -13,28 +13,30 @@ ${BF_LIB}/log-starting
 
 
 #======================================================================================================================
-# Get file to restore.
+# Get whether or not this is executing as a cron.
 #======================================================================================================================
 
-[[ -z "${1-}" ]] && bf-error "You must specify the file to restore."
-FILE_TO_RESTORE=${1}
-FILENAME=`basename ${FILE_TO_RESTORE}`
+if [ ! "${CRON-}" = "1" ] ; then
+    ADDITIONAL_ARGS="--progress"
+fi
 
 
 #======================================================================================================================
-# Restore specified file.
+# Check custom rclone variables.
 #======================================================================================================================
 
-${BF_LIB}/clear-restore
+[[ -z "${BACKUP_RCLONE_CUSTOM_CMD-} "]] && bf-error "You must set the rclone command using BACKUP_RCLONE_CUSTOM_CMD."
 
-bf-echo "Restoring /${FILE_TO_RESTORE}..."
-duplicity restore \
-    --allow-source-mismatch \
-    --archive-dir ${BACKUP_DUPLICITY_ARCHIVE} \
-    --file-to-restore "${FILE_TO_RESTORE}" \
-    --progress \
-    "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" \
-    "${BACKUP_RESTORE}/${FILENAME}"
+
+#======================================================================================================================
+# Run custom rclone command using custom arguments.
+# (Config file location is read from environment variables by rclone.)
+#======================================================================================================================
+
+bf-echo "Executing rclone ${CMD}..."
+rclone ${BACKUP_RCLONE_CUSTOM_CMD} "${BACKUP_SOURCE}" "${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" \
+    ${BACKUP_RCLONE_CUSTOM_ARG-} \
+    ${ADDITIONAL_ARGS-}
 bf-done
 
 ${BF_LIB}/log-done
