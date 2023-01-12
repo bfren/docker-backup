@@ -36,8 +36,8 @@ bf-echo "Executing rclone mirror..."
 rclone sync "${BACKUP_SOURCE}" "${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" \
     --delete-during \
     --delete-excluded \
-    --exclude-from=${BACKUP_RCLONE_EXCLUSIONS} \
-    --log-file=${BACKUP_RCLONE_LOG} \
+    --exclude-from ${BACKUP_RCLONE_EXCLUSIONS} \
+    --log-file ${BACKUP_RCLONE_LOG} \
     ${ADDITIONAL_ARGS-}
 bf-done
 
