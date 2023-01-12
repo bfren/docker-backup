@@ -25,7 +25,6 @@ fi
 # Run rclone sync with options to create a mirror.
 # (Config file location is read from environment variables by rclone.)
 # Arguments:
-#   --checksum          Skip based on checksum (if available) & size, not mod-time & size
 #   --delete-during     When synchronizing, delete files on destination before transferring
 #   --delete-excluded   Delete files on dest excluded from sync
 #   --exclude-from      Read file exclude patterns from file
@@ -42,7 +41,6 @@ rclone sync "${BACKUP_SOURCE}" "${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" 
     ${ADDITIONAL_ARGS-}
 bf-done
 
-rclone size \
-    "${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}"
+rclone size "${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}"
 
 ${BF_LIB}/log-done
