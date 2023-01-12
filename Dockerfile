@@ -26,7 +26,9 @@ ENV \
     BACKUP_RCLONE_CUSTOM_CMD= \
     BACKUP_RCLONE_CUSTOM_ARG= \
     # skip based on checksum (if available) & size, not mod-time & size (to disable set RCLONE_CHECKSUM=false)
-    RCLONE_CHECKSUM=true
+    RCLONE_CHECKSUM=true \
+    # log info about each transfer and statistics (default: INFO) - see https://rclone.org/docs/#log-level-level
+    RCLONE_LOG_LEVEL=INFO
 
 COPY ./overlay /
 
