@@ -25,7 +25,7 @@ fi
 # Check custom rclone variables.
 #======================================================================================================================
 
-[[ -z "${BACKUP_RCLONE_CUSTOM_CMD} "]] && bf-error "You must define the rclone command using BACKUP_RCLONE_CUSTOM_CMD."
+[[ -z "${BACKUP_RCLONE_CUSTOM_CMD-} "]] && bf-error "You must set the rclone command using BACKUP_RCLONE_CUSTOM_CMD."
 
 
 #======================================================================================================================
