@@ -13,6 +13,15 @@ ${BF_LIB}/log-starting
 
 
 #======================================================================================================================
+# Get whether or not this is executing as a cron.
+#======================================================================================================================
+
+if [ "${CRON-}" -ne "1" ]
+    ADDITIONAL_ARGS="--progress"
+fi
+
+
+#======================================================================================================================
 # Execute backup.
 #======================================================================================================================
 
@@ -24,6 +33,7 @@ duplicity \
     --full-if-older-than ${BACKUP_DUPLICITY_FULL_EVERY} \
     --log-file ${DUPLICITY_LOG} \
     --volsize ${BACKUP_DUPLICITY_VOLSIZE_IN_MB} \
+    ${ADDITIONAL_ARGS} \
     "${BACKUP_SOURCE}" "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}"
 bf-done
 
@@ -38,6 +48,7 @@ duplicity remove-all-but-n-full ${BACKUP_DUPLICITY_KEEP_FULL} \
     --archive-dir ${DUPLICITY_ARCHIVE} \
     --force \
     --log-file ${DUPLICITY_LOG} \
+    ${ADDITIONAL_ARGS} \
     "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}"
 bf-done
 

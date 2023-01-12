@@ -13,6 +13,15 @@ ${BF_LIB}/log-starting
 
 
 #======================================================================================================================
+# Get whether or not this is executing as a cron.
+#======================================================================================================================
+
+if [ "${CRON-}" -ne "1" ]
+    ADDITIONAL_ARGS="--progress"
+fi
+
+
+#======================================================================================================================
 # Run rclone sync with options to create a mirror.
 # (Config file location is read from environment variables by rclone.)
 # Arguments:
@@ -30,7 +39,7 @@ rclone sync "${BACKUP_SOURCE}" "${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" 
     --delete-excluded \
     --exclude-from=${RCLONE_EXCLUSIONS} \
     --log-file=${RCLONE_LOG} \
-    --progress
+    ${ADDITIONAL_ARGS}
 bf-done
 
 rclone size \
