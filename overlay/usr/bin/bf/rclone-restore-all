@@ -9,7 +9,7 @@ export BF_E=`basename ${0}`
 #======================================================================================================================
 
 ${BF_LIB}/test-setup
-${BF_LIB}/log-starting
+${BF_LIB}/backup-starting
 
 
 #======================================================================================================================
@@ -27,4 +27,4 @@ rclone copy "${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" "${BACKUP_RESTORE}"
     --progress
 bf-done
 
-${BF_LIB}/log-done
+${BF_LIB}/backup-done
