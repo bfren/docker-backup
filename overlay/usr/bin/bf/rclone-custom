@@ -9,7 +9,7 @@ export BF_E=`basename ${0}`
 #======================================================================================================================
 
 ${BF_LIB}/test-setup
-${BF_LIB}/log-starting
+${BF_LIB}/backup-starting
 
 
 #======================================================================================================================
@@ -39,4 +39,4 @@ rclone ${BACKUP_RCLONE_CUSTOM_CMD} "${BACKUP_SOURCE}" "${BACKUP_RCLONE_STORAGE}:
     ${ADDITIONAL_ARGS-}
 bf-done
 
-${BF_LIB}/log-done
+${BF_LIB}/backup-done

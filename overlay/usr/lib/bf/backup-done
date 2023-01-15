@@ -1,26 +1,17 @@
-#!/command/with-contenv sh
+#!/bin/sh
 
 set -euo pipefail
-export BF_E=`basename ${0}`
 
 
 #======================================================================================================================
-# Test setup.
+# Delete running file.
 #======================================================================================================================
 
-${BF_LIB}/test-setup
-${BF_LIB}/backup-starting
+rm -f ${BACKUP_RUNNING}
 
 
 #======================================================================================================================
-# Verify mirror.
-# Arguments:
-#   --one-way           Check one way only, source files must exist on remote
+# Log current operation done (name contained in BF_E).
 #======================================================================================================================
 
-bf-echo "Verifying mirror..."
-rclone check "${BACKUP_SOURCE}" "${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" \
-    --one-way
-bf-done
-
-${BF_LIB}/backup-done
+bf-done >> ${BACKUP_OPERATIONS_LOG}

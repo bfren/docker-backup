@@ -1,38 +1,24 @@
-#!/command/with-contenv sh
+#!/bin/sh
 
 set -euo pipefail
-export BF_E=`basename ${0}`
 
 
 #======================================================================================================================
-# Test setup.
+# If running file exists, do not continue.
 #======================================================================================================================
 
-${BF_LIB}/test-setup
-${BF_LIB}/backup-starting
-
-
-#======================================================================================================================
-# Get whether or not this is executing as a cron.
-#======================================================================================================================
-
-if [ ! "${CRON-}" = "1" ] ; then
-    ADDITIONAL_ARGS="--progress"
-fi
+[[ -f "${BACKUP_RUNNING}" ]] && bf-error "Unable to start: backup already running." "backup-starting"
 
 
 #======================================================================================================================
-# Execute full backup.
+# Log current operation starting (name contained in BF_E).
 #======================================================================================================================
 
-bf-echo "Executing full backup..."
-duplicity full \
-    --allow-source-mismatch \
-    --archive-dir ${BACKUP_DUPLICITY_ARCHIVE} \
-    --exclude-filelist ${BACKUP_DUPLICITY_EXCLUSIONS} \
-    --volsize ${BACKUP_DUPLICITY_VOLSIZE_IN_MB} \
-    ${ADDITIONAL_ARGS-} \
-    "${BACKUP_SOURCE}" "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}"
-bf-done
+bf-echo "Starting..." "backup-starting" >> ${BACKUP_OPERATIONS_LOG}
 
-${BF_LIB}/backup-done
+
+#======================================================================================================================
+# Create running file using current date.
+#======================================================================================================================
+
+bf-echo "Started." "backup-starting" > ${BACKUP_RUNNING}
