@@ -9,7 +9,6 @@ export BF_E=`basename ${0}`
 #======================================================================================================================
 
 ${BF_LIB}/test-setup
-${BF_LIB}/backup-starting
 
 
 #======================================================================================================================
@@ -36,5 +35,3 @@ duplicity restore \
     "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" \
     "${BACKUP_RESTORE}/${FILENAME}"
 bf-done
-
-${BF_LIB}/backup-done
