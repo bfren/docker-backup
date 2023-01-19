@@ -7,14 +7,16 @@ set -euo pipefail
 # If running file exists, do not continue.
 #======================================================================================================================
 
-[[ -f "${BACKUP_RUNNING}" ]] && bf-error "Unable to start: backup already running." "backup-starting"
+if [ -f "${BACKUP_RUNNING}" ] ; then
+    bf-error "Unable to start: backup already running." "backup-starting" | tee -a ${BACKUP_OPERATIONS_LOG}
+fi
 
 
 #======================================================================================================================
 # Log current operation starting (name contained in BF_E).
 #======================================================================================================================
 
-bf-echo "Starting..." "backup-starting" >> ${BACKUP_OPERATIONS_LOG}
+bf-echo "Starting..." "backup-starting" | tee -a ${BACKUP_OPERATIONS_LOG}
 
 
 #======================================================================================================================
