@@ -9,7 +9,7 @@ set -euo pipefail
 #   1   Absolute path to file to check / create.
 #======================================================================================================================
 
-create-if-not-exists () {
+create_if_not_exists () {
     [[ -f "${1}" ]] || touch "${1}"
 }
 
@@ -21,8 +21,8 @@ create-if-not-exists () {
 bf-debug "Verifying setup..." "test-setup"
 bf-debug " .. operations logs" "test-setup"
 
-create-if-not-exists ${BACKUP_LAST_CRON_LOG}
-create-if-not-exists ${BACKUP_OPERATIONS_LOG}
+create_if_not_exists ${BACKUP_LAST_CRON_LOG}
+create_if_not_exists ${BACKUP_OPERATIONS_LOG}
 
 
 #======================================================================================================================
@@ -42,8 +42,8 @@ bf-debug " .. passphrase" "test-setup"
 bf-debug " .. duplicity" "test-setup"
 
 mkdir -p ${BACKUP_DUPLICITY_ARCHIVE}
-create-if-not-exists ${BACKUP_DUPLICITY_EXCLUSIONS}
-create-if-not-exists ${BACKUP_DUPLICITY_LOG}
+create_if_not_exists ${BACKUP_DUPLICITY_EXCLUSIONS}
+create_if_not_exists ${BACKUP_DUPLICITY_LOG}
 
 
 #======================================================================================================================
@@ -59,8 +59,8 @@ bf-debug " .. rclone" "test-setup"
     || bf-error "rclone storage '${BACKUP_RCLONE_STORAGE}' is not defined." "test-setup"
 
 mkdir -p ${BACKUP_CONFIG_RCLONE}
-create-if-not-exists ${BACKUP_RCLONE_EXCLUSIONS}
-create-if-not-exists ${BACKUP_RCLONE_LOG}
+create_if_not_exists ${BACKUP_RCLONE_EXCLUSIONS}
+create_if_not_exists ${BACKUP_RCLONE_LOG}
 
 
 #======================================================================================================================
