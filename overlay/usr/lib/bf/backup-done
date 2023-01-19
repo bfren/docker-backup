@@ -14,4 +14,4 @@ bf-rmrf "${BACKUP_RUNNING}"
 # Log current operation done (name contained in BF_E).
 #======================================================================================================================
 
-bf-done >> ${BACKUP_OPERATIONS_LOG}
+bf-done | tee -a ${BACKUP_OPERATIONS_LOG}
