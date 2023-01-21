@@ -68,10 +68,6 @@ jobs:
             bfren/backup:${{ steps.version_major.outputs.contents }}
             bfren/backup:${{ steps.version_minor.outputs.contents }}
             bfren/backup:${{ steps.version.outputs.contents }}
-            ghcr.io/bfren/backup:latest
-            ghcr.io/bfren/backup:${{ steps.version_major.outputs.contents }}
-            ghcr.io/bfren/backup:${{ steps.version_minor.outputs.contents }}
-            ghcr.io/bfren/backup:${{ steps.version.outputs.contents }}
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}

@@ -61,8 +61,6 @@ jobs:
           tags: |
             bfren/backup:dev
             bfren/backup:${{ steps.version.outputs.contents }}-beta
-            ghcr.io/bfren/backup:dev
-            ghcr.io/bfren/backup:${{ steps.version.outputs.contents }}-beta
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
