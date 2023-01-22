@@ -34,7 +34,8 @@ duplicity \
     --log-file ${BACKUP_DUPLICITY_LOG} \
     --volsize ${BACKUP_DUPLICITY_VOLSIZE_IN_MB} \
     ${ADDITIONAL_ARGS-} \
-    "${BACKUP_SOURCE}" "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}"
+    "${BACKUP_SOURCE}" "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" \
+    || true
 bf-done
 
 
@@ -49,7 +50,8 @@ duplicity remove-all-but-n-full ${BACKUP_DUPLICITY_KEEP_FULL} \
     --force \
     --log-file ${BACKUP_DUPLICITY_LOG} \
     ${ADDITIONAL_ARGS-} \
-    "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}"
+    "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" \
+    || true
 bf-done
 
 ${BF_LIB}/backup-done

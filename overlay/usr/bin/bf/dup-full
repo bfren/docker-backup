@@ -32,7 +32,8 @@ duplicity full \
     --exclude-filelist ${BACKUP_DUPLICITY_EXCLUSIONS} \
     --volsize ${BACKUP_DUPLICITY_VOLSIZE_IN_MB} \
     ${ADDITIONAL_ARGS-} \
-    "${BACKUP_SOURCE}" "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}"
+    "${BACKUP_SOURCE}" "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" \
+    || true
 bf-done
 
 ${BF_LIB}/backup-done
