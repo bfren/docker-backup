@@ -24,6 +24,7 @@ bf-echo "rclone version ${RCLONE_VERSION}."
 bf-echo "Installing duplicity v${DUPLICITY_VERSION} and rclone v${RCLONE_VERSION}..."
 apk add --no-cache \
     duplicity@edgecomm=${DUPLICITY_VERSION} \
+    python3@edgemain \
     rclone@edgecomm=${RCLONE_VERSION}
 bf-done
 
