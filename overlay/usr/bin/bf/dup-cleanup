@@ -19,6 +19,7 @@ bf-echo "Cleaning up extraneous files (e.g. from aborted backup)..."
 duplicity cleanup \
     --archive-dir ${BACKUP_DUPLICITY_ARCHIVE} \
     --force \
+    --verbosity ${BACKUP_DUPLICITY_VERBOSITY} \
     "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" \
     || true
 bf-done
