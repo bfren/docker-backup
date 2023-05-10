@@ -1,4 +1,4 @@
-FROM bfren/alpine-s6:alpineedge-4.4.17
+FROM bfren/alpine-s6:alpine3.8-4.5.0
 
 LABEL org.opencontainers.image.source="https://github.com/bfren/docker-backup"
 
