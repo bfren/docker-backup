@@ -30,6 +30,7 @@ duplicity full \
     --allow-source-mismatch \
     --archive-dir ${BACKUP_DUPLICITY_ARCHIVE} \
     --exclude-filelist ${BACKUP_DUPLICITY_EXCLUSIONS} \
+    --verbosity ${BACKUP_DUPLICITY_VERBOSITY} \
     --volsize ${BACKUP_DUPLICITY_VOLSIZE_IN_MB} \
     ${ADDITIONAL_ARGS-} \
     "${BACKUP_SOURCE}" "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" \

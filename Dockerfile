@@ -1,4 +1,4 @@
-FROM bfren/alpine-s6:alpine3.17-4.4.15
+FROM bfren/alpine-s6:alpine3.18-4.5.0
 
 LABEL org.opencontainers.image.source="https://github.com/bfren/docker-backup"
 
@@ -16,6 +16,8 @@ ENV \
     BACKUP_DUPLICITY_FULL_EVERY=1M \
     # the number of full backups to keep
     BACKUP_DUPLICITY_KEEP_FULL=3 \
+    # duplicity output verbosity (error, warning, notice, info, debug)
+    BACKUP_DUPLICITY_VERBOSITY=notice \
     # sets the duplicity volume size in MB (default: 200MB)
     BACKUP_DUPLICITY_VOLSIZE_IN_MB=200 \
     # the name of the (configured) rclone storage provider
