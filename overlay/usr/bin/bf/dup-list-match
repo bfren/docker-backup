@@ -12,13 +12,23 @@ ${BF_LIB}/test-setup
 
 
 #======================================================================================================================
-# List files currently in the backup.
+# Get string to match using grep.
 #======================================================================================================================
 
-bf-echo "Listing files currently included in the backup..."
+[[ -z "${1-}" ]] && bf-error "You must specify a value to match files to."
+MATCH=${1}
+
+
+#======================================================================================================================
+# List files currently in the backup that match a specified string.
+#======================================================================================================================
+
+bf-echo "Getting list of files currently included in the backup that match "${MATCH}"..."
 duplicity list-current-files \
     --allow-source-mismatch \
     --archive-dir ${BACKUP_DUPLICITY_ARCHIVE} \
     --log-file ${BACKUP_DUPLICITY_LOG} \
-    "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}"
+    "rclone://${BACKUP_RCLONE_STORAGE}:${BACKUP_RCLONE_PATH}" \
+    | \
+    grep ${MATCH}
 bf-done
