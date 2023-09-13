@@ -3,6 +3,7 @@
 IMAGE=`cat VERSION`
 
 docker buildx build \
+    --load \
     --build-arg BF_IMAGE=backup \
     --build-arg BF_VERSION=${IMAGE} \
     -f Dockerfile \
