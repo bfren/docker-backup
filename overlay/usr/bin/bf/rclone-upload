@@ -1,0 +1,38 @@
+#!/command/with-contenv sh
+
+set -euo pipefail
+export BF_E=`basename ${0}`
+
+
+#======================================================================================================================
+# Test setup.
+#======================================================================================================================
+
+${BF_LIB}/test-setup
+
+
+#======================================================================================================================
+# Get upload variables.
+#======================================================================================================================
+
+[[ -z "${1-}" ]] && bf-error "You must specify the file to restore."
+FILE_TO_UPLOAD=${1}
+FILENAME=`basename ${FILE_TO_UPLOAD}`
+
+[[ -z "${2-}" ]] && bf-error "You must specify the upload path."
+UPLOAD_PATH=${2}
+
+
+#======================================================================================================================
+# Run rclone copyto.
+# (Config file location is read from environment variables by rclone.)
+# Arguments:
+#   --log-file          Log everything to this file
+#======================================================================================================================
+
+bf-echo "Copying ${FILENAME} to backup storage..."
+rclone copyto "${BACKUP_SOURCE}/${FILE_TO_UPLOAD}" "${BACKUP_RCLONE_STORAGE}:${UPLOAD_PATH}" \
+    --log-file=${BACKUP_RCLONE_LOG} \
+    ${ADDITIONAL_ARGS-} \
+    || true
+bf-done
